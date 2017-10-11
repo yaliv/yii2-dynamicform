@@ -6,6 +6,7 @@
  * @author Wanderson Bragança <wanderson.wbc@gmail.com>
  * @contributor Vivek Marakana <vivek.marakana@gmail.com>
  * @contributor Riza Saputra <riza.saputra@gmail.com>
+ * @contributor Muhammad Yahya Muhaimin <surat.pribadiku@gmail.com>
  */
 (function ($) {
     var pluginName = 'yiiDynamicForm';
@@ -464,6 +465,7 @@
             $hasSelect2.each(function() {
                 var id = $(this).attr('id');
                 var configSelect2 = eval($(this).attr('data-krajee-select2'));
+                var configS2Options = $(this).attr('data-s2-options');
 
                 if ($(this).data('select2')) {
                     $(this).select2('destroy');
@@ -477,7 +479,7 @@
                     _restoreKrajeeDepdrop($(this));
                 }
 
-                $.when($('#' + id).select2(configSelect2)).done(initS2Loading(id, '.select2-container--krajee'));
+                $.when($('#' + id).select2(configSelect2)).done(initS2Loading(id, configS2Options));
 
                 var kvClose = 'kv_close_' + id.replace(/\-/g, '_');
 
